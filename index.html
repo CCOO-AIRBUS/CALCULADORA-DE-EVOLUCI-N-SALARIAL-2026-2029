@@ -1,12 +1,9 @@
-Tienes toda la razón, se había quedado alineado a la derecha en las pantallas grandes por la regla de adaptación de escritorio.
-He forzado la estructura de la cabecera para que el título esté siempre perfectamente centrado tanto en móviles como en ordenadores, manteniendo el logo de CCOO a la izquierda de forma limpia y equilibrada.
-Aquí tienes el código corregido y listo para actualizar tu index.html:
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparativa Salarial 2026–2029 - CCOO Airbus Spain</title>
+    <title>Evolución Salarial Propuesta Ministerio 2026–2029 - CCOO Airbus Spain</title>
     <style>
         :root {
             --ccoo-red: #E30613;
@@ -14,7 +11,6 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
             --light-red: #FF3B47;
             --blue: #005587;
             --green: #1A7A3A;
-            --amber: #C07800;
             --bg-gray: #f4f4f4;
             --white: #FFFFFF;
             --text-main: #333333;
@@ -39,7 +35,6 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            /* Espacio inferior para que el footer fijo no tape el contenido final */
             padding-bottom: 120px; 
         }
 
@@ -48,44 +43,23 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
             top: 0;
             z-index: 1000;
             background: linear-gradient(135deg, var(--dark-red) 0%, var(--ccoo-red) 50%, var(--light-red) 100%);
-            padding: 15px 20px;
+            padding: 10px 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo {
-            background: var(--white);
-            padding: 6px 10px;
-            border-radius: 4px;
             display: flex;
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        .logo img {
-            height: 45px;
-            width: auto;
-            display: block;
-        }
-
-        .header-title {
-            color: var(--white);
-            font-size: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-align: center;
+        .header-img-container {
             width: 100%;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            letter-spacing: 0.5px;
-            grid-column: 2;
+            max-width: 1000px;
+            text-align: center;
         }
 
-        /* Elemento invisible para equilibrar el grid y asegurar el centrado absoluto del título en escritorio */
-        .header-spacer {
-            width: 45px; 
+        .header-img-container img {
+            max-height: 70px;
+            width: auto;
+            display: inline-block;
         }
 
         .container {
@@ -175,28 +149,21 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
 
         #results-panel { display: none; }
         .result-section-title { text-align: center; font-size: 24px; color: var(--dark-red); margin: 40px 0 20px 0; text-transform: uppercase; font-weight: bold; }
-        .cards-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        
+        .cards-grid-single { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 25px; max-width: 650px; margin-left: auto; margin-right: auto; }
         .res-card { padding: 25px; border-radius: var(--border-radius); color: var(--white); box-shadow: var(--shadow); }
-        .res-card.amber { background: var(--amber); }
         .res-card.red { background: var(--ccoo-red); }
         .res-card h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 10px; }
         .res-card .main-val { font-size: 34px; font-weight: bold; margin-bottom: 10px; }
         .res-card .sub-val { font-size: 16px; background: rgba(0,0,0,0.15); padding: 8px 12px; border-radius: 4px; margin-bottom: 10px; font-weight: bold; }
         .res-card .info-text { font-size: 12px; opacity: 0.9; }
 
-        .diff-block { background: #e8f5e9; border-left: 8px solid var(--green); padding: 30px; border-radius: var(--border-radius); color: #115024; text-align: center; margin: 40px 0; }
-        .diff-block h3 { font-size: 22px; margin-bottom: 5px; }
-        .diff-block h4 { font-size: 16px; font-weight: normal; margin-bottom: 20px; color: #1b5e20; }
-        .diff-block .diff-val { font-size: 48px; font-weight: bold; margin-bottom: 10px; }
-
         .table-responsive { overflow-x: auto; margin-top: 15px; }
         table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--white); }
         th, td { border: 1px solid #ddd; padding: 12px; text-align: right; }
         th { background-color: var(--blue); color: white; text-align: center; font-weight: bold; }
         td:first-child { text-align: center; font-weight: bold; background-color: #f9f9f9; }
-        .col-amber { background-color: #fff8e1; }
         .col-red { background-color: #fff0f1; }
-        .th-amber { background-color: var(--amber) !important; }
         .th-red { background-color: var(--ccoo-red) !important; }
         .small-txt { display: block; font-size: 11px; color: #666; margin-top: 4px; text-align: right; }
 
@@ -212,59 +179,35 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
             left: 0;
             width: 100%;
             z-index: 999;
-            background: linear-gradient(135deg, var(--dark-red) 0%, var(--ccoo-red) 50%, var(--light-red) 100%);
-            color: var(--white);
+            background: var(--white);
             text-align: center;
-            padding: 10px 20px;
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
+            padding: 8px 10px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+            border-top: 1px solid #ddd;
         }
 
-        .footer-content {
+        .footer-img-container {
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        .footer-note {
-            font-size: 12px;
-            line-height: 1.3;
-            margin-bottom: 4px;
-            text-align: center;
-        }
-
-        .footer-note strong {
-            color: #FFD54F;
-            text-transform: uppercase;
-        }
-
-        .footer-copyright {
-            font-size: 11px;
-            opacity: 0.9;
+        .footer-img-container img {
+            max-height: 45px;
+            width: auto;
+            display: inline-block;
         }
 
         @media (max-width: 768px) {
-            header {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 8px;
-            }
-            .logo {
-                margin: 0 auto;
-            }
-            .header-spacer {
-                display: none;
-            }
-            .header-title {
-                font-size: 16px;
-                grid-column: 1;
-            }
-            body { padding-bottom: 150px; }
+            .grid-4 { grid-template-columns: 1fr 1fr; }
+            .btn-group { flex-direction: column; }
+            body { padding-bottom: 100px; }
         }
 
         @media print {
             body { background: var(--white); -webkit-print-color-adjust: exact; print-color-adjust: exact; padding-bottom: 0; }
             header, .btn-group, .export-btns, footer { display: none !important; }
             .container { padding: 0; max-width: 100%; }
-            .card, .notice-box, .diff-block, .res-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            .card, .notice-box, .res-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
             table { page-break-inside: avoid; }
         }
     </style>
@@ -272,31 +215,26 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
 <body>
 
 <header>
-    <div class="logo">
-        <img src="ccoo industria airbus.png" alt="CCOO Industria Airbus">
+    <div class="header-img-container">
+        <img src="ccoonuevo.png" alt="CCOO Airbus">
     </div>
-    <div class="header-title">
-        Calculadora de evolución salarial 2026-2029
-    </div>
-    <div class="header-spacer"></div>
 </header>
 
 <div class="container">
-    <h1>COMPARATIVA SALARIAL 2026–2029</h1>
-    <div class="subtitle">Hipótesis 3% desde Enero vs. Propuesta del Ministerio</div>
-    <p class="desc-text">Herramienta de simulación sindical para evaluar el impacto del ciclo y la mitigación del efecto abril.</p>
+    <h1>SIMULADOR SALARIAL 2026–2029</h1>
+    <div class="subtitle">Evolución con la Propuesta del Ministerio</div>
+    <p class="desc-text">Herramienta de proyección salarial personalizada basada en las previsiones de IPC y la propuesta de incremento.</p>
     <p class="privacy-note">Los datos se calculan únicamente en tu navegador: no se almacenan ni se envían.</p>
 
     <div class="notice-box">
-        <h3>Marco de comparación y contexto metodológico</h3>
-        <p><strong>Ámbito temporal estricto:</strong> Esta simulación cubre de forma exclusiva el ciclo <strong>2026–2029</strong>. Carece de rigor proyectar este tipo de escenarios más allá de 2029, ya que no existen marcos de negociación colectiva ni convenios firmados para años posteriores.</p>
-        <p><strong>Hipótesis de 3% desde enero:</strong> Simula un escenario ideal de incremento salarial fijo del 3% aplicado cada año de forma ininterrumpida desde el mes de enero. Cabe destacar que una aplicación continuada en enero jamás estuvo disponible como opción real sobre la mesa (la tónica habitual de la dirección sitúa las revisiones en abril).</p>
-        <p><strong>Propuesta del Ministerio:</strong> Combina la garantía de IPC real + diferencial aplicando el efecto enero en los dos primeros años (2026 y 2027) y adaptándose al marco de homogeneización temporal del grupo en el mes de abril a partir de 2028.</p>
-        <p><strong>Mitigación del "efecto abril":</strong> Con el fin de equilibrar el decalaje temporal que supone trasladar la revisión al mes de abril en 2028 y 2029 (homogeneizándonos con el resto de países del grupo), la propuesta incorpora un <strong>pago único no consolidable de 2.000 € brutos</strong> en octubre de 2026, neutralizando así cualquier diferencia acumulada para la plantilla.</p>
+        <h3>Contexto de la Propuesta del Ministerio</h3>
+        <p><strong>Ámbito temporal estricto:</strong> Esta simulación cubre el ciclo <strong>2026–2029</strong> (cuya vigencia real se extiende hasta marzo de 2030). Proyectar estos datos más allá de 2029 carece de rigor al no existir un convenio firmado para 2030 en adelante.</p>
+        <p><strong>Incrementos y aplicación:</strong> Aplica IPC real + 2,0 puntos en 2026, 2027 y 2028 (con efecto enero en 2026-2027 y efecto abril en 2028), e IPC + 1,95 puntos con efecto abril en 2029 para homogeneizar con el marco temporal del grupo en Europa.</p>
+        <p><strong>Mitigación del efecto abril:</strong> Se incluye un <strong>pago único no consolidable de 2.000 € brutos</strong> en octubre de 2026 para compensar el decalaje temporal de los primeros meses de 2028 y 2029.</p>
     </div>
 
     <div class="card">
-        <h2>INTRODUCE TUS DATOS</h2>
+        <h2>INTRODUCE TUS DATOS Y PREVISIONES DE IPC</h2>
         
         <div class="form-group">
             <label>ELIGE TU BANDA SALARIAL (TABLA 2025)</label>
@@ -316,7 +254,7 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
             <span id="salary_parsed" class="parsed-salary">Salario interpretado por la calculadora: 50.000,00 €</span>
         </div>
 
-        <label style="margin-top: 15px;">PREVISIÓN IPC REAL / SUPUESTO PARA LA PROPUESTA DEL MINISTERIO (%):</label>
+        <label style="margin-top: 15px;">PREVISIÓN IPC REAL / SUPUESTO PARA CADA AÑO (%):</label>
         <div class="grid-4">
             <div class="form-group">
                 <label style="font-size: 12px;">IPC 2026</label>
@@ -339,7 +277,7 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
         <div id="error-msg" class="error-msg"></div>
 
         <div class="btn-group">
-            <button class="btn-primary" onclick="calcular()">CALCULAR COMPARATIVA</button>
+            <button class="btn-primary" onclick="calcular()">CALCULAR PROYECCIÓN</button>
             <button class="btn-secondary" onclick="restablecer()">RESTABLECER EJEMPLO</button>
         </div>
     </div>
@@ -347,65 +285,27 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
     <!-- Resultados -->
     <div id="results-panel">
         
-        <div class="result-section-title">1. Base Salarial Final (Consolidada al cierre de 2029)</div>
-        <div class="cards-grid-2">
-            <div class="res-card amber">
-                <h4>SALARIO BASE 2029: HIPÓTESIS 3% DESDE ENERO</h4>
-                <div class="main-val" id="res-base-hip">0,00 €</div>
-                <div class="sub-val" id="res-cons-hip">Subida frente a 2025: +0,00 €</div>
-                <div class="info-text">Aplicación fija del 3% cada año desde enero (escenario ideal limitado a 2026-2029).</div>
-            </div>
+        <div class="result-section-title">1. Resultados al cierre del ciclo (2029)</div>
+        <div class="cards-grid-single">
             <div class="res-card red">
-                <h4>SALARIO BASE 2029: PROPUESTA MINISTERIO</h4>
+                <h4>SALARIO BASE CONSOLIDADO 2029 (PROPUESTA MINISTERIO)</h4>
                 <div class="main-val" id="res-base-min">0,00 €</div>
-                <div class="sub-val" id="res-cons-min">Subida frente a 2025: +0,00 €</div>
-                <div class="info-text">Resultante de aplicar IPC + diferencial (con efecto abril en 2028-2029).</div>
-            </div>
-        </div>
-
-        <div class="result-section-title">2. Total de dinero extra ganado (2026–2029)</div>
-        <div class="cards-grid-2">
-            <div class="res-card amber">
-                <h4>DINERO ADICIONAL: HIPÓTESIS 3% DESDE ENERO</h4>
-                <div class="main-val" id="res-add-hip">0,00 €</div>
-                <div class="info-text">Cantidad cobrada de más respecto a mantener congelado el salario de 2025.</div>
-                <div class="info-text" style="margin-top: 8px; opacity: 0.7;" id="res-tot-hip">Total percibido 2026-2029: 0,00 €</div>
-            </div>
-            <div class="res-card red">
-                <h4>DINERO ADICIONAL: PROPUESTA MINISTERIO</h4>
-                <div class="main-val" id="res-add-min">0,00 €</div>
-                <div class="info-text">Cantidad cobrada de más respecto a mantener congelado el salario de 2025. Incluye pago único de 2.000 € para compensar el efecto abril.</div>
-                <div class="info-text" style="margin-top: 8px; opacity: 0.7;" id="res-tot-min">Total percibido 2026-2029 (incl. 2.000€): 0,00 €</div>
-            </div>
-        </div>
-
-        <div class="diff-block">
-            <h3>DIFERENCIA ACUMULADA ENTRE AMBAS OPCIONES 2026–2029</h3>
-            <h4>Propuesta del Ministerio (con 2.000 € de pago único) frente a Hipótesis 3% desde Enero</h4>
-            <div class="diff-val" id="res-diff-val">0,00 €</div>
-            <div class="diff-note">Diferencia de dinero adicional acumulado entre ambas opciones durante el ciclo completo.</div>
-        </div>
-
-        <div class="card">
-            <h2>TABLA COMPARATIVA RESUMEN</h2>
-            <div class="table-responsive">
-                <table id="summary-table">
-                    <!-- Rellenado por JS -->
-                </table>
+                <div class="sub-val" id="res-cons-min">Subida total frente a 2025: +0,00 € (+0,00%)</div>
+                <div class="info-text" id="res-tot-min" style="margin-top: 10px; font-size: 13px;">Total percibido en el ciclo 2026-2029 (incl. pago único 2.000€): 0,00 €</div>
+                <div class="info-text" id="res-add-min" style="margin-top: 4px; font-size: 13px;">Dinero extra ganado respecto a congelar el salario de 2025: 0,00 €</div>
             </div>
         </div>
 
         <div class="card">
-            <h2>EVOLUCIÓN DE LA BASE SALARIAL: DOS ESCENARIOS</h2>
+            <h2>EVOLUCIÓN DE LA BASE SALARIAL</h2>
             <div class="chart-legend">
-                <span class="legend-item"><span class="dot" style="background: var(--amber);"></span>Hipótesis 3% desde Enero</span>
                 <span class="legend-item"><span class="dot" style="background: #E30613;"></span>Propuesta Ministerio (Enero '26-'27 / Abril '28-'29)</span>
             </div>
             <div class="chart-container">
                 <canvas id="chartCanvas"></canvas>
             </div>
             <p style="text-align: center; font-size: 13px; color: #666; margin-top: 15px;">
-                Ámbar: Hipótesis 3% desde enero. Rojo: Propuesta del Ministerio (con revisión en abril para 2028 y 2029).<br>La gráfica representa la base salarial consolidada.
+                La gráfica representa la consolidación anual de tu salario base con la propuesta del Ministerio.
             </p>
         </div>
 
@@ -417,14 +317,14 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
                 </table>
             </div>
             <p style="font-size: 12px; color: #666; margin-top: 15px;">
-                * El pago único de 2.000 € brutos (octubre 2026) se suma al total percibido de la Propuesta del Ministerio para mitigar con holgura el decalaje temporal del efecto abril en los últimos años del ciclo.
+                * El pago único de 2.000 € brutos (octubre 2026) se suma al total percibido en 2026 para mitigar el impacto temporal del efecto abril en los últimos años del ciclo, sin afectar a la base consolidable.
             </p>
         </div>
 
         <div class="cards-grid-2" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
             <div class="card">
                 <h2>Metodología, límites y letra pequeña</h2>
-                <p style="font-size:14px; line-height:1.5;">Simulación orientativa para Airbus Spain restringida estrictamente al ciclo 2026–2029. La hipótesis contrasta una subida lineal fija del 3% anual desde enero frente a la propuesta del Ministerio (IPC + 2% en 2026-2028 con efecto enero en 26-27 y abril en 28; e IPC + 1,95% en 2029 con efecto abril), incorporando los 2.000 € de pago único no consolidable.</p>
+                <p style="font-size:14px; line-height:1.5;">Simulación orientativa para Airbus Spain restringida estrictamente al ciclo 2026–2029 según la propuesta del Ministerio (IPC + 2% en 2026-2028 con efecto enero en 26-27 y abril en 28; e IPC + 1,95% en 2029 con efecto abril), incorporando los 2.000 € de pago único no consolidable.</p>
                 <p style="font-size:14px; line-height:1.5; margin-top: 10px;"><strong>Sobre las pagas extras:</strong> El cálculo asume el devengo estrictamente legal y proporcional de las pagas extras en los años con cambio de tablas (2028 y 2029). Si la empresa decidiera abonar la extra de verano íntegra con las nuevas tablas por simplicidad administrativa, el dinero real percibido a favor del trabajador sería ligeramente superior al mostrado en esta simulación.</p>
             </div>
         </div>
@@ -437,13 +337,8 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
 </div>
 
 <footer>
-    <div class="footer-content">
-        <div class="footer-note">
-            <strong>NOTA ACLARATORIA:</strong> Resultados estrictamente orientativos y sin valor contractual. No incluye IRPF, Seguridad Social ni complementos.
-        </div>
-        <div class="footer-copyright">
-            © Sección Sindical CCOO · Airbus Spain. Consulta siempre los textos oficiales aplicables.
-        </div>
+    <div class="footer-img-container">
+        <img src="piepaginaccoo.png" alt="CCOO Pie">
     </div>
 </footer>
 
@@ -540,22 +435,6 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
         var pagoUnico = 2000;
         var refCongelada = baseInit * 4;
 
-        // Escenario Hipótesis Fija 3% desde Enero
-        var hipBases = [];
-        var hipPercs = [];
-        var currHipBase = baseInit;
-        var totHipPerc = 0;
-
-        for (var i = 0; i < 4; i++) {
-            currHipBase = currHipBase * 1.03; // 3% fijo desde enero
-            hipBases.push(currHipBase);
-            hipPercs.push(currHipBase);
-            totHipPerc += currHipBase;
-        }
-        var hipAdicional = totHipPerc - refCongelada;
-        var hipSubidaEuros = currHipBase - baseInit;
-        var hipSubidaPct = ((currHipBase / baseInit) - 1) * 100;
-
         // Escenario Propuesta Ministerio
         var minPct26 = ipc26 + 2.0;
         var minBase26 = baseInit * (1 + minPct26/100);
@@ -582,23 +461,15 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
         var minSubidaEuros = minBase29 - baseInit;
         var minSubidaPct = ((minBase29 / baseInit) - 1) * 100;
 
-        var diferencia = minTotPerc - totHipPerc;
-
         return {
             baseInit: baseInit, pagoUnico: pagoUnico,
             ipcs: [ipc26, ipc27, ipc28, ipc29],
-            hip: {
-                bases: hipBases,
-                percs: hipPercs,
-                totPerc: totHipPerc, adicional: hipAdicional, subidaEuros: hipSubidaEuros, subidaPct: hipSubidaPct, baseFinal: currHipBase
-            },
             min: {
                 pcts: minPcts,
                 bases: minBases,
                 percs: minPercs,
                 totPerc: minTotPerc, adicional: minAdicional, subidaEuros: minSubidaEuros, subidaPct: minSubidaPct, baseFinal: minBase29
-            },
-            diferencia: diferencia
+            }
         };
     }
 
@@ -635,32 +506,12 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
     }
 
     function renderResultados() {
-        document.getElementById('res-base-hip').innerText = formatearMoneda(dSim.hip.baseFinal);
-        document.getElementById('res-cons-hip').innerText = "Subida: +" + formatearMoneda(dSim.hip.subidaEuros) + " (+" + formatearPorcentaje(dSim.hip.subidaPct) + "%)";
-        
         document.getElementById('res-base-min').innerText = formatearMoneda(dSim.min.baseFinal);
-        document.getElementById('res-cons-min').innerText = "Subida: +" + formatearMoneda(dSim.min.subidaEuros) + " (+" + formatearPorcentaje(dSim.min.subidaPct) + "%)";
+        document.getElementById('res-cons-min').innerText = "Subida total frente a 2025: +" + formatearMoneda(dSim.min.subidaEuros) + " (+" + formatearPorcentaje(dSim.min.subidaPct) + "%)";
+        document.getElementById('res-tot-min').innerText = "Total percibido en el ciclo 2026-2029 (incl. pago único 2.000€): " + formatearMoneda(dSim.min.totPerc);
+        document.getElementById('res-add-min').innerText = "Dinero extra ganado respecto a congelar el salario de 2025: +" + formatearMoneda(dSim.min.adicional);
 
-        document.getElementById('res-add-hip').innerText = formatearMoneda(dSim.hip.adicional);
-        document.getElementById('res-tot-hip').innerText = "Total percibido 2026-2029: " + formatearMoneda(dSim.hip.totPerc);
-
-        document.getElementById('res-add-min').innerText = formatearMoneda(dSim.min.adicional);
-        document.getElementById('res-tot-min').innerText = "Total percibido 2026-2029 (incl. 2.000€): " + formatearMoneda(dSim.min.totPerc);
-
-        var elDiff = document.getElementById('res-diff-val');
-        elDiff.innerText = (dSim.diferencia >= 0 ? "+" : "") + formatearMoneda(dSim.diferencia);
-        elDiff.style.color = dSim.diferencia >= 0 ? "#115024" : "var(--ccoo-red)";
-
-        var stHTML = "<thead><tr><th>CONCEPTO</th><th class='th-amber'>HIPÓTESIS 3% DESDE ENERO</th><th class='th-red'>PROPUESTA MINISTERIO</th></tr></thead><tbody>";
-        stHTML += "<tr><td>Base 2025</td><td class='col-amber'>" + formatearMoneda(dSim.baseInit) + "</td><td class='col-red'>" + formatearMoneda(dSim.baseInit) + "</td></tr>";
-        stHTML += "<tr><td>Base tras 2029</td><td class='col-amber'>" + formatearMoneda(dSim.hip.baseFinal) + "</td><td class='col-red'>" + formatearMoneda(dSim.min.baseFinal) + "</td></tr>";
-        stHTML += "<tr><td>Subida acumulada</td><td class='col-amber'>+" + formatearMoneda(dSim.hip.subidaEuros) + " (+" + formatearPorcentaje(dSim.hip.subidaPct) + "%)</td><td class='col-red'>+" + formatearMoneda(dSim.min.subidaEuros) + " (+" + formatearPorcentaje(dSim.min.subidaPct) + "%)</td></tr>";
-        stHTML += "<tr><td>Dinero adicional cobrado</td><td class='col-amber'>" + formatearMoneda(dSim.hip.adicional) + "</td><td class='col-red'>" + formatearMoneda(dSim.min.adicional) + "</td></tr>";
-        stHTML += "<tr><td>Pago único 2.000€ (Mitigación)</td><td class='col-amber'>No aplica</td><td class='col-red'>Incluido (Oct. 2026)</td></tr>";
-        stHTML += "</tbody>";
-        document.getElementById('summary-table').innerHTML = stHTML;
-
-        var anHTML = "<thead><tr><th>Año</th><th>IPC</th><th class='th-amber'>Hipótesis 3% (Enero)</th><th class='th-amber'>Base Hipótesis</th><th class='th-amber'>Percibido Hipótesis</th><th class='th-red'>Subida Ministerio</th><th class='th-red'>Base Ministerio</th><th class='th-red'>Percibido Ministerio</th></tr></thead><tbody>";
+        var anHTML = "<thead><tr><th>Año</th><th>IPC Previsto</th><th class='th-red'>Subida Aplicada (Ministerio)</th><th class='th-red'>Base Salarial Consolidada</th><th class='th-red'>Salario Percibido en el Año</th></tr></thead><tbody>";
         
         var anos = [2026, 2027, 2028, 2029];
         for(var i=0; i<4; i++) {
@@ -668,12 +519,9 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
             anHTML += "<tr>";
             anHTML += "<td>" + anos[i] + "</td>";
             anHTML += "<td>" + formatearPorcentaje(dSim.ipcs[i]) + "%</td>";
-            anHTML += "<td class='col-amber'>3,00% (Enero)</td>";
-            anHTML += "<td class='col-amber'>" + formatearMoneda(dSim.hip.bases[i]) + "</td>";
-            anHTML += "<td class='col-amber'>" + formatearMoneda(dSim.hip.percs[i]) + "</td>";
             anHTML += "<td class='col-red'>" + formatearPorcentaje(dSim.min.pcts[i]) + "%<span class='small-txt'>" + descMin + "</span></td>";
             anHTML += "<td class='col-red'>" + formatearMoneda(dSim.min.bases[i]) + "</td>";
-            anHTML += "<td class='col-red'>" + formatearMoneda(dSim.min.percs[i]) + (i===0 ? " <span class='small-txt'>(+2.000€ pago único)</span>" : "") + "</td>";
+            anHTML += "<td class='col-red'>" + formatearMoneda(dSim.min.percs[i]) + (i===0 ? " <span class='small-txt'>(+2.000€ pago único oct.)</span>" : "") + "</td>";
             anHTML += "</tr>";
         }
         anHTML += "</tbody>";
@@ -705,11 +553,10 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
         var chartW = W - padL - padR;
         var chartH = H - padB - padT;
 
-        var ptsHip = [dSim.baseInit].concat(dSim.hip.bases);
         var ptsMin = [dSim.baseInit].concat(dSim.min.bases);
 
-        var maxVal = Math.max.apply(null, ptsHip.concat(ptsMin));
-        var minVal = Math.min.apply(null, ptsHip.concat(ptsMin)) * 0.98;
+        var maxVal = Math.max.apply(null, ptsMin);
+        var minVal = Math.min.apply(null, ptsMin) * 0.98;
         var range = (maxVal * 1.02) - minVal;
 
         var labels = ['Base 2025', '2026', '2027', '2028', '2029'];
@@ -763,7 +610,6 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
             }
         }
 
-        drawLine(ptsHip, '#C07800'); // Ámbar Hipótesis 3%
         drawLine(ptsMin, '#E30613'); // Rojo Ministerio
     }
 
@@ -775,24 +621,18 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
 
     function exportTXT() {
         if (!dSim.baseInit) return;
-        var txt = "COMPARATIVA SALARIAL 2026-2029 - CCOO AIRBUS\n\n";
+        var txt = "SIMULADOR SALARIAL 2026-2029 (PROPUESTA MINISTERIO) - CCOO AIRBUS\n\n";
         txt += "Salario Base 2025: " + formatearMoneda(dSim.baseInit) + "\n\n";
         
-        txt += "--- HIPÓTESIS 3% DESDE ENERO ---\n";
-        txt += "Base final consolidada 2029: " + formatearMoneda(dSim.hip.baseFinal) + "\n";
-        txt += "Dinero adicional acumulado: " + formatearMoneda(dSim.hip.adicional) + "\n\n";
-
         txt += "--- PROPUESTA MINISTERIO ---\n";
         txt += "Base final consolidada 2029: " + formatearMoneda(dSim.min.baseFinal) + "\n";
-        txt += "Dinero adicional acumulado (incluye 2.000€ pago único): " + formatearMoneda(dSim.min.adicional) + "\n\n";
-
-        txt += "--- DIFERENCIA ACUMULADA ---\n";
-        txt += "A favor de Propuesta Ministerio: " + (dSim.diferencia > 0 ? "+" : "") + formatearMoneda(dSim.diferencia) + "\n\n";
+        txt += "Total percibido 2026-2029 (incl. 2.000€): " + formatearMoneda(dSim.min.totPerc) + "\n";
+        txt += "Dinero adicional ganado: " + formatearMoneda(dSim.min.adicional) + "\n\n";
 
         var blob = new Blob([txt], { type: 'text/plain;charset=utf-8;' });
         var link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = "Comparativa_Salarial_CCOO.txt";
+        link.download = "Simulacion_Ministerio_CCOO.txt";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -804,4 +644,3 @@ Aquí tienes el código corregido y listo para actualizar tu index.html:
 </script>
 </body>
 </html>
-
