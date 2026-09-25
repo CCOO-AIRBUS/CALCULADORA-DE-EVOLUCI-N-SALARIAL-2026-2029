@@ -43,43 +43,23 @@
             top: 0;
             z-index: 1000;
             background: linear-gradient(135deg, var(--dark-red) 0%, var(--ccoo-red) 50%, var(--light-red) 100%);
-            padding: 15px 20px;
+            padding: 10px 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo {
-            background: var(--white);
-            padding: 6px 10px;
-            border-radius: 4px;
             display: flex;
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        .logo img {
-            height: 45px;
-            width: auto;
-            display: block;
-        }
-
-        .header-title {
-            color: var(--white);
-            font-size: 20px;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-align: center;
+        .header-img-container {
             width: 100%;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            letter-spacing: 0.5px;
-            grid-column: 2;
+            max-width: 1000px;
+            text-align: center;
         }
 
-        .header-spacer {
-            width: 45px; 
+        .header-img-container img {
+            max-height: 70px;
+            width: auto;
+            display: inline-block;
         }
 
         .container {
@@ -199,54 +179,28 @@
             left: 0;
             width: 100%;
             z-index: 999;
-            background: linear-gradient(135deg, var(--dark-red) 0%, var(--ccoo-red) 50%, var(--light-red) 100%);
-            color: var(--white);
+            background: var(--white);
             text-align: center;
-            padding: 10px 20px;
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
+            padding: 8px 10px;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+            border-top: 1px solid #ddd;
         }
 
-        .footer-content {
+        .footer-img-container {
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        .footer-note {
-            font-size: 12px;
-            line-height: 1.3;
-            margin-bottom: 4px;
-            text-align: center;
-        }
-
-        .footer-note strong {
-            color: #FFD54F;
-            text-transform: uppercase;
-        }
-
-        .footer-copyright {
-            font-size: 11px;
-            opacity: 0.9;
+        .footer-img-container img {
+            max-height: 45px;
+            width: auto;
+            display: inline-block;
         }
 
         @media (max-width: 768px) {
-            header {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 8px;
-            }
-            .logo {
-                margin: 0 auto;
-            }
-            .header-spacer {
-                display: none;
-            }
-            .header-title {
-                font-size: 16px;
-                grid-column: 1;
-            }
             .grid-4 { grid-template-columns: 1fr 1fr; }
             .btn-group { flex-direction: column; }
-            body { padding-bottom: 150px; }
+            body { padding-bottom: 100px; }
         }
 
         @media print {
@@ -261,13 +215,9 @@
 <body>
 
 <header>
-    <div class="logo">
-        <img src="ccoo industria airbus.png" alt="CCOO Industria Airbus">
+    <div class="header-img-container">
+        <img src="ccoonuevo.png" alt="CCOO Airbus">
     </div>
-    <div class="header-title">
-        Simulador Salarial Propuesta Ministerio 2026-2029
-    </div>
-    <div class="header-spacer"></div>
 </header>
 
 <div class="container">
@@ -387,13 +337,8 @@
 </div>
 
 <footer>
-    <div class="footer-content">
-        <div class="footer-note">
-            <strong>NOTA ACLARATORIA:</strong> Resultados estrictamente orientativos y sin valor contractual. No incluye IRPF, Seguridad Social ni complementos.
-        </div>
-        <div class="footer-copyright">
-            © Sección Sindical CCOO · Airbus Spain. Consulta siempre los textos oficiales aplicables.
-        </div>
+    <div class="footer-img-container">
+        <img src="piepaginaccoo.png" alt="CCOO Pie">
     </div>
 </footer>
 
@@ -562,7 +507,7 @@
 
     function renderResultados() {
         document.getElementById('res-base-min').innerText = formatearMoneda(dSim.min.baseFinal);
-        document.getElementById('res-cons-min').innerText = "Subida frente a 2025: +" + formatearMoneda(dSim.min.subidaEuros) + " (+" + formatearPorcentaje(dSim.min.subidaPct) + "%)";
+        document.getElementById('res-cons-min').innerText = "Subida total frente a 2025: +" + formatearMoneda(dSim.min.subidaEuros) + " (+" + formatearPorcentaje(dSim.min.subidaPct) + "%)";
         document.getElementById('res-tot-min').innerText = "Total percibido en el ciclo 2026-2029 (incl. pago único 2.000€): " + formatearMoneda(dSim.min.totPerc);
         document.getElementById('res-add-min').innerText = "Dinero extra ganado respecto a congelar el salario de 2025: +" + formatearMoneda(dSim.min.adicional);
 
